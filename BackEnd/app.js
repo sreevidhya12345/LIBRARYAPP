@@ -1,4 +1,6 @@
 
+const path=require('path');
+
 const express=require('express');
 const Bookdata = require('./src/model/booklist');
 const Userdata =require('./src/model/UserData');
@@ -19,7 +21,7 @@ var db=mongoose.connect('mongodb://localhost:27017/Libraryapp',function(err,res)
     }
 });
 
-
+app.use(express.static('./dist/libraryapp'))
  var app= new express();
  app.use(cors());
   app.use(express.urlencoded({extended:true}));
@@ -27,7 +29,7 @@ var db=mongoose.connect('mongodb://localhost:27017/Libraryapp',function(err,res)
  app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/booklist',(req,res)=>{
+app.get('/api/booklist',(req,res)=>{
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Method: GET ,POST, PATCH,PUT,DELETE,OPTIONS")
     Bookdata.find()
@@ -39,7 +41,7 @@ app.get('/booklist',(req,res)=>{
               });  
 });
 // ADDBOOK
-app.post('/addbook',function(req,res){
+app.post('/api/addbook',function(req,res){
        
     console.log(req.body);
      
@@ -59,7 +61,7 @@ app.post('/addbook',function(req,res){
 
 //  SIGN UP
 
-app.post('/signup',function(req,res){
+app.post('/api/signup',function(req,res){
 
     console.log(req.body);
     
@@ -76,7 +78,7 @@ app.post('/signup',function(req,res){
 
 // LOGIN
 
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
     let userdata = req.body
          
         if (!username) {
@@ -106,7 +108,7 @@ app.get('/:id',  (req, res) => {
 
 //   UPDATE PAGE
 
-  app.put('/update',(req,res)=>{
+  app.put('/api/update',(req,res)=>{
     console.log(req.body)
     id=req.body._id,
     bookId= req.body.bookId,
@@ -130,7 +132,7 @@ app.get('/:id',  (req, res) => {
  })
 
 // DELETE
-app.delete('/remove/:id',(req,res)=>{
+app.delete('/api/remove/:id',(req,res)=>{
    
     id = req.params.id;
     

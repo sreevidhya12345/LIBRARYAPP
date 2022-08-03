@@ -9,7 +9,7 @@ import { Router} from '@angular/router';
 })
 export class AuthService {
 
-  private _loginUrl="http://localhost:3000/login";
+  private _loginUrl="http://localhost:api/login";
 
   
 
@@ -51,7 +51,7 @@ loginUser(user:any)
   }
 
   newUser(item:any){
-    return this.http.post("http://localhost:3000/signup",{"userdata":item})
+    return this.http.post("http://localhost:api/signup",{"userdata":item})
     .subscribe(data=>{console.log(data)})
     
   }
