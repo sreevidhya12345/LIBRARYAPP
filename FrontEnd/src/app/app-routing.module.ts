@@ -11,8 +11,11 @@ import { UpdatebookComponent } from './updatebook/updatebook.component';
 
 const routes: Routes = [
   
+  {path:' ',
+  redirectTo:'home'},
   {path:'home',
-  component:HomeComponent},
+  component:HomeComponent
+},
  {path:'books',
  component:BooksComponent},
  {path:'login',

@@ -4,7 +4,7 @@ import{HttpClientModule} from '@angular/common/http';
 import {FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
-
+import { HttpInterceptor } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { AddbookComponent } from './addbook/addbook.component';
 import { UpdatebookComponent } from './updatebook/updatebook.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { BookServiceService } from './book-service.service';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { SignupComponent } from './signup/signup.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,BookServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

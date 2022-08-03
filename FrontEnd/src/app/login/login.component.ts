@@ -31,6 +31,8 @@ user={
    
 
   ngOnInit(): void {}
+   
+  // this.httpservice.get("http://localhost:3000/api/")
 
 
   loginUser () {

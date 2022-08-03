@@ -38,9 +38,17 @@ export class AuthService {
 loginUser(user:any)
   {
     return this.http.post<any>(this._loginUrl, user)
+    
+  }
+
+  loggedIn(){
+    return !localStorage.getItem('token')
   }
 
 
+  getToken(){
+      localStorage.getItem('token')
+  }
 
   newUser(item:any){
     return this.http.post("http://localhost:3000/signup",{"userdata":item})

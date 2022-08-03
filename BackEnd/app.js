@@ -1,3 +1,4 @@
+
 const express=require('express');
 const Bookdata = require('./src/model/booklist');
 const Userdata =require('./src/model/UserData');
@@ -6,8 +7,10 @@ const cors=require('cors');
 const jwt=require('jsonwebtoken');
 var bodyParser=require('body-parser');
 
-username='';
-password='1234';
+const port = process.env.PORT || 4000;
+//   username='admin';
+//   password='1234';
+
 
 var db=mongoose.connect('mongodb://localhost:27017/Libraryapp',function(err,res){
     if(err){console.log(err);}
@@ -140,15 +143,8 @@ app.delete('/remove/:id',(req,res)=>{
   })
 
 // 
-app.get('/username',  (req, res) => {
-  
-    const id = req.params.username;
-      Userdata.findOne({"uname":id})
-      .then((userdata)=>{
-          res.send(userdata);
-      });
-  })
 
- app.listen(3000, function(){
+
+ app.listen(port, function(){
     console.log('listening to port 3000');
 });
